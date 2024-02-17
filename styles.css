@@ -1,0 +1,170 @@
+.menu-background {
+    background-color: #5b3a70; /* Um roxo escuro como cor de fundo */
+    color: white;
+}
+
+.game-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #a283d3; /* Um roxo claro para o título */
+    border-bottom: 4px solid #8c61b3; /* Uma borda roxa abaixo do título */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.game-button {
+    background-color: #8c61b3; /* Um roxo médio para os botões */
+    border: none;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.game-button:hover {
+    background-color: #a283d3; /* Um roxo mais claro para o hover dos botões */
+}
+/* ... (seu código anterior) ... */
+
+.character {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid white;
+    margin: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+/* ... (estilos anteriores) ... */
+
+.character-slot {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border: 2px solid #fff;
+    cursor: pointer;
+}
+
+.character-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#characterMatrix {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#characterMatrix img {
+    width: 90px;
+    height: 90px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+/* ... (restante dos estilos) ... */
+/* Estilos adicionais para a tela de ajustes conforme a imagem fornecida */
+
+.ajustes-container {
+    background-color: #4A4A4A; /* Cor de fundo cinza escuro */
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto; /* Centralizar o container na tela */
+    width: 80%; /* Definindo a largura do container de ajustes */
+}
+
+.ajustes-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.ajustes-slider {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ajustes-slider label {
+    font-size: 0.9rem;
+    color: #FFFFFF;
+    margin-right: 15px; /* Espaço entre a label e o controle deslizante */
+    white-space: nowrap; /* Certifique-se de que o texto não quebre em várias linhas */
+}
+
+.ajustes-slider input[type="range"] {
+    flex-grow: 1; /* Permitir que o controle deslizante cresça para preencher o espaço */
+    margin: 0 10px;
+}
+
+.ajustes-value {
+    min-width: 50px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 1rem;
+}
+
+/* Estilos de personalização do controle deslizante */
+input[type="range"] {
+    -webkit-appearance: none; /* Remover a aparência padrão */
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #707070; /* Cor de fundo do controle deslizante */
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #FFFFFF; /* Cor do polegar do controle deslizante */
+    cursor: pointer;
+}
+
+/* Estilos do polegar para o Firefox */
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 50%;
+    background: #FFFFFF;
+    cursor: pointer;
+}
+
+/* Estilos do polegar para IE */
+input[type="range"]::-ms-thumb {
+    background: #FFFFFF;
+    cursor: pointer;
+}
+
+/* Estilos da trilha para IE */
+input[type="range"]::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+.ajustes-icon {
+    display: inline-block;
+    width: 20px; /* Ajuste conforme o tamanho do seu ícone */
+    height: 20px; /* Ajuste conforme o tamanho do seu ícone */
+    margin-right: 10px;
+    /* Adicionar estilos para ícones aqui, como background-image se estiver usando ícones de imagem */
+}
+
+.return-icon {
+    display: inline-block;
+    width: 30px; /* Ajuste conforme o tamanho do seu ícone */
+    height: 30px; /* Ajuste conforme o tamanho do seu ícone */
+    margin-right: 10px;
+    /* Adicionar estilos para ícones aqui, como background-image se estiver usando ícones de imagem */
+    /* Inserir imagem de ícone de retorno se necessário */
+}
+
+/* Adicione estilos para ícones específicos com base em suas classes aqui */
+

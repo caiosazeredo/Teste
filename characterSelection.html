@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção de Lutadores - O jogo desbalanceado</title>
+    <script src="Personagem.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body class="menu-background">
+
+<div id="characterSelection" class="container">
+    <div class="row justify-content-center align-items-center vh-100">
+        <div class="col-md-8 text-center">
+            <h1 class="game-title mb-4">Seleção de Lutadores</h1>
+            <div class="selected-characters mb-4"></div>
+            <div class="btn-group mb-4">
+                <button id="addCharacter" class="btn game-button mr-2">+</button>
+                <button id="removeCharacter" class="btn game-button mr-2">-</button>
+                <button id="startGame" class="btn game-button">Iniciar Jogo</button>
+            </div>
+        </div>
+        <div id="characterMatrix" class="col-md-4">
+            <div class="row">
+       
+                <div class="col-4 character-option" data-src="personagens/Character (1).png">
+                    <img src="personagens/Character (1).png" alt="Character 1">
+                </div>
+                <div class="col-4 character-option" data-src="personagens/Character (2).png">
+                    <img src="personagens/Character (2).png" alt="Character 2">
+                </div>
+                <div class="col-4 character-option" data-src="personagens/Character (3).png">
+                    <img src="personagens/Character (3).png" alt="Character 3">
+                </div>
+                <!-- Repita para outros personagens da primeira linha -->
+            </div>
+            <div class="row">
+                <div class="col-4 character-option" data-src="personagens/Character (4).png">
+                    <img src="personagens/Character (4).png" alt="Character 4">
+                </div>
+                <div class="col-4 character-option" data-src="personagens/Character (5).png">
+                    <img src="personagens/Character (5).png" alt="Character 5">
+                </div>
+                <div class="col-4 character-option" data-src="personagens/Character (6).png">
+                    <img src="personagens/Character (6).png" alt="Character 6">
+                </div>
+                <!-- Repita para outros personagens da segunda linha -->
+            </div>
+            <div class="row">
+                <div class="col-4 character-option" data-src="personagens/Character (7).png">
+                    <img src="personagens/Character (7).png" alt="Character 7">
+                </div>
+                <div class="col-4 character-option" data-src="personagens/Character (8).png">
+                    <img src="personagens/Character (8).png" alt="Character 8">
+                </div>
+                <div class="col-4 character-option" data-src="personagens/Character (9).png">
+                    <img src="personagens/Character (9).png" alt="Character 9">
+                </div>
+                <!-- Repita para outros personagens da terceira linha -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS e popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Script Adicional para a funcionalidade -->
+<script>
+$(document).ready(function() {
+    let activeSlot = null;
+
+    function addCharacterSlot() {
+        $(".selected-characters").append('<div class="character-slot" data-selected="false"><img src="personagens/question.png" alt="Placeholder"></div>');
+    }
+
+    $("#addCharacter").click(addCharacterSlot);
+    for (let i = 0; i < 2; i++) {
+        addCharacterSlot();
+    }
+
+    $("#removeCharacter").click(function() {
+        $(".selected-characters .character-slot:last-child").remove();
+    });
+
+    $(".selected-characters").on('click', '.character-slot', function() {
+        $(".character-slot").removeClass("active");
+        activeSlot = $(this);
+        activeSlot.addClass("active");
+        if (activeSlot.attr("data-selected") === "true") {
+            activeSlot.attr("data-selected", "false");
+        }
+    });
+
+    $(".character-option").click(function() {
+        if (activeSlot) {
+            const selectedCharacterSrc = $(this).data("src");
+            activeSlot.html(`<img src="${selectedCharacterSrc}" alt="Selected Character">`);
+            activeSlot.attr("data-selected", "true");
+            activeSlot.data("characterSrc", selectedCharacterSrc);
+            activeSlot.removeClass("active");
+            activeSlot = null;
+        }
+    });
+
+    $("#startGame").click(function() {
+        const personagensSelecionados = [];
+        $(".selected-characters .character-slot[data-selected='true']").each(function() {
+            const characterImgSrc = $(this).data("characterSrc");
+            if (characterImgSrc) {
+                const personagem = criarPersonagemPorImagem(characterImgSrc);
+                personagensSelecionados.push(personagem);
+            }
+        });
+
+        localStorage.setItem('personagensSelecionados', JSON.stringify(personagensSelecionados.map(p => ({
+            nome: p.nome,
+            forca: p.forca,
+            agilidade: p.agilidade,
+            inteligencia: p.inteligencia,
+            resistencia: p.resistencia
+        }))));
+
+        window.location.href = 'atributos.html';
+    });
+});
+</script>
+
+</body>
+</html>
